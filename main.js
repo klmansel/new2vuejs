@@ -9,7 +9,7 @@ var app = new Vue({
             {
                 variantId: 2234,
                 variantColor: "green",
-                variantImage: 'sockpic.jpeg',
+                variantImage: './assets/sockpic.jpeg',
                 variantQuantity: 5,
                 onSale: true
                 
@@ -17,7 +17,7 @@ var app = new Vue({
             {
                 variantId: 2235,
                 variantColor: "blue",
-                variantImage: 'blueSocks.jpeg',
+                variantImage: './assets/blueSocks.jpeg',
                 variantQuantity: 2,
                 onSale: false
             }
@@ -57,3 +57,7 @@ var app = new Vue({
     
 
 });
+
+// Vue.component('product',{
+//     template:
+// });
