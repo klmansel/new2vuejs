@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Kara's First Vue Product App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />   
+</head>
+<body>
+<div class="nav-bar"></div>
+    <div id="app">
+        <div class="product">
+
+            <div class="product-image">
+                <img v-bind:src="image" alt="sock picture">
+            </div>
+
+            <div class="product-info">
+                <h1>{{ title }}</h1>
+                <p v-if="inventory">In Stock</p>
+                <!-- <p v-else-if="checkStock">Hurry! Almost out of stock!</p> -->
+                <p :style="{ 'text-decoration': 'line-through' }"
+                    v-else>Out of Stock</p>
+                <p>{{ sale }}</p>
+
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+
+                <div v-for="(variant,index) in variants" 
+                    :key="variant.variantId"
+                    class="color-box"
+                    :style="{ backgroundColor: variant.variantColor }"
+                    @mouseover="updateProduct(index)">
+                </div>
+                <button @click="addToCart"
+                 :disabled="!inventory"
+                 :class="{disabledButton: !inventory}"> Add To Cart</button>
+                 <button @click="removeFromCart"
+                 :disabled="cart === 0"
+                 :class="{disabledButton: cart === 0}"> Remove</button>
+                <div class="cart">
+                    <p>Cart({{ cart }})</p>
+                </div>
+            </div> 
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>   
+</body>
+</html>
